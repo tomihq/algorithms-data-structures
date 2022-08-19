@@ -27,11 +27,23 @@ class MyArray{
         
     }
 
+    unshift(value){
+        //Obtengo valor nuevo, entonces todos los valores que tenian antes, se guardaran uno adelante.
+        for(let i = this.length; i>0; i--){
+          
+            this.data[i] = this.data[i-1];
+        }
+        this.data[0] = value;
+        this.length++;
+        return this.data;
+    }
+
     delete(index){
         for (let i = index; i < this.length; i++) {
             if(i>index) this.data[i-1] = this.data[i]
         }
         delete this.data[this.length-1];
+        this.length--;
         return this.data;
     }
 
@@ -48,6 +60,11 @@ myArray.push('Pedro');
 myArray.push('Carlo');
 myArray.push('Juan');
 myArray.pop(); 
-console.log(myArray);
+/* console.log(myArray); */
 myArray.delete(5)
+/* console.log(myArray); */
 console.log(myArray);
+myArray.unshift("Fernando");
+console.log(myArray);
+
+
