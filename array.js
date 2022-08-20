@@ -30,7 +30,6 @@ class MyArray{
     unshift(value){
         //Obtengo valor nuevo, entonces todos los valores que tenian antes, se guardaran uno adelante.
         for(let i = this.length; i>0; i--){
-          
             this.data[i] = this.data[i-1];
         }
         this.data[0] = value;
