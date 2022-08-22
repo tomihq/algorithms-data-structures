@@ -89,27 +89,25 @@ class SinglyLinkedList{
     }
 
     remove(index){
-        if(index>this.length-1) return `Ooops, no pudimos hacer nada. No hay ningun nodo en esa posicion.`
-        
+        console.time("start-remove");
+        if(index>this.length-1) return `Ooops, no pudimos hacer nada. No hay ningun nodo en esa posicion.`;
         if (index<0)  return 'El indice debe ser mayor a cero.';
+        if(index==this.length-1) return `Operación no admitida. No tiene lógica eliminar el último elemento del Nodo, para colocarlo en el mismo lugar.`;
         
-        if(index==this.length-1){ //Si quiere remover el último nodo y ponerlo en el mismo lugar.
-            return `Operación no admitida. No tiene lógica eliminar el último elemento del Nodo, para colocarlo en el mismo lugar.`
-        }
-
         const actualNode = this.getIndex(index); //Obtiene el valor del nodo en esa posicion.
         
         if(index==0){ //Significa que no tiene nada atrás. No podemos restar. Necesito solamente pasar todos uno a la izquierda.
-            const nextNode = actualNode.next //Se espera el nodo siguiente al que queremos eliminar.
+            const nextNode = actualNode.next; //Se espera el nodo siguiente al que queremos eliminar.
             this.head = nextNode; //Como es el primero el que queremos eliminar, entonces el siguiente elemento tiene que ser ahora la cabeza.
         }else{
             const previousNode = this.getIndex(index - 1); //Nodo anterior al que vamos a eliminar. 
-            const nextNode = previousNode.next.next; //Nodo que le sigue al que vamos a eliminar. 
-            previousNode.next = nextNode; //
+            const nextNode = actualNode.next; //Nodo que le sigue al que vamos a eliminar. 
+            previousNode.next = nextNode; 
         }
 
         this.append(actualNode.value); 
         this.length--; 
+        console.timeEnd("start-remove");
         return `El valor ${actualNode.value} que estaba en el indice ${index} ahora está al final`;
         
     }
@@ -122,7 +120,7 @@ numbersToAppend.forEach((number) =>{
     mySinglyLinkedList.append(number);
 })
 
-mySinglyLinkedList.prepend(-2)
+mySinglyLinkedList.prepend(-2);
 
 /* Antes  -2, 2, 3, 4, 5, 6, 14, -1, 145, 190, 200, 210 */
 /* console.log(mySinglyLinkedList.remove(0)); */
