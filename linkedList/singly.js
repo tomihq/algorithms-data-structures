@@ -133,7 +133,7 @@ mySinglyLinkedList.prepend(-2);
 //console.log(mySinglyLinkedList.remove(12));
 
 /* Antes -2, 1, 2, 3, 4, 5, 6, 14, -1, 145, 190, 200, 210  */ 
-console.log(mySinglyLinkedList.remove(6));
+console.log(mySinglyLinkedList.remove(2));
 /* Ahora -2, 1, 2, 3, 4, 5, 14, -1, 145, 190, 200, 210, 6 */
 
 
